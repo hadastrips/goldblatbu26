@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מינדי, יוטי ואמא בבודפשט</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #191970; /* כחול לילה */
+            --secondary: #D4AF37; /* זהב */
+            --accent: #8B4513; /* חום שלכת */
+            --bg-light: #F5F7FA;
+            --text-main: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            max-width: 500px;
+            margin: 0 auto;
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 15px;
+            padding-bottom: 40px;
+        }
+
+        /* --- Header --- */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            background-color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .header h2 {
+            color: var(--accent);
+            background-color: transparent;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .quick-links a {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- Cards & Schedule --- */
+        .day-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border-top: 6px solid var(--primary);
+        }
+
+        .day-title {
+            background-color: #ffffff;
+            color: var(--primary);
+            padding: 15px;
+            font-size: 1.25rem;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        details {
+            border-bottom: 1px solid #f0f0f0;
+        }
+        details:last-child {
+            border-bottom: none;
+        }
+
+        summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-main);
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .arrow-icon {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            padding: 0 15px 15px 15px;
+            font-size: 0.95rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .info-row i {
+            color: var(--secondary);
+            margin-top: 3px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .highlight-link {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: var(--secondary);
+            text-decoration-thickness: 2px;
+        }
+
+        /* --- Cost Table --- */
+        .cost-section-title {
+            color: var(--primary);
+            text-align: center;
+            margin: 30px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .cost-table th, .cost-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cost-table th {
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .cost-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px 10px;
+            border-top: 1.5px solid #e0e0e0;
+        }
+
+        .footer .line1 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .footer .line2 {
+            color: #777777;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="1.jpg" alt="Logo" class="logo">
+        <h1>מינדי, יוטי ואמא בבודפשט</h1>
+        <h2>11-15/10/26</h2>
+        
+        <div class="quick-links">
+            <a href="https://share.google/79RZ4E3O5W4lO8Fvr" target="_blank"><i class="fas fa-cloud-sun"></i> תחזית מזג אוויר</a>
+            <a href="https://maps.app.goo.gl/ua1vU5C5rJGmZXys5" target="_blank"><i class="fas fa-home"></i> ניווט לדירה</a>
+            <a href="#restaurants"><i class="fas fa-utensils"></i> מסעדות</a>
+        </div>
+        
+        <div style="font-size: 0.9rem; margin-top: 10px; color: var(--accent);">
+            <i class="fas fa-info-circle"></i> שקיעה: 18:00 | מטבע: פורינט (HUF) | מוניות מומלצות: Bolt
+        </div>
+    </header>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+        <h3 class="day-title">יום ראשון 11/10 - נחיתה והתאקלמות</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title">16:30 הגעה לשדה התעופה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-plane-departure"></i><span>הגעה לנתב"ג והתארגנות לפני הטיסה</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">19:00 ממריאים</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-passport"></i><span>טיסה נעימה לבודפשט!</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">21:30 נחיתה בבודפשט</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-taxi"></i><span>לוקחים מונית מהשדה לדירה באמצעות אפליקציית Bolt</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">23:00 הגעה לדירה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-bed"></i><span>התארגנות ולילה טוב</span></div>
+                <div class="info-row"><i class="fas fa-map-marker-alt"></i><span>כתובת: Budapest, Király u. 46, 1061</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/ua1vU5C5rJGmZXys5" target="_blank" class="highlight-link">ניווט לדירה בגוגל מפות</a></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+        <h3 class="day-title">יום שני 12/10 - הכרת העיר ושייט קסום</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title">10:00-13:00 סיור רגלי בעיר</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-walking"></i><span>נקודת מפגש בגלגל הענק. אפשרות לסיור פרטי ב-150€</span></div>
+                <div class="info-row"><i class="fas fa-coins"></i><span>עלות: 30€ לאדם</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/djrPyGHJidgbLSkt5?g_st=ac" target="_blank" class="highlight-link">ניווט לנקודת המפגש</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">13:00-14:30 הפוגת צהריים</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-coffee"></i><span>זמן לקפה ומשהו קליל או ארוחת צהריים מוקדמת (מבחר מסעדות מטה)</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">15:00-17:00 ואצי אוצה והשוק הגדול</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-shopping-bag"></i><span>מדרחוב חנויות יפהפה עד לשוק הגדול. שוק מלא מזכרות ותוצרת מקומית. הליכה מישורית ונינוחה.</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/kMJAyN3V18gTyvSW6?g_st=ac" target="_blank" class="highlight-link">ניווט לתחילת המדרחוב</a></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/dX5TVKYfhiHKTt4w5" target="_blank" class="highlight-link">ניווט לזארה</a></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/dHKJyfGEm5Fy7EDLA?g_st=ac" target="_blank" class="highlight-link">ניווט לשוק הגדול</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">17:30-18:30 שייט שקיעה על הדנובה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-ship"></i><span>בשעה הכי יפה, מול הפרלמנט המואר. הליכה רגלית מהשוק כ-10 דק'. מומלץ ספינה עם קומה סגורה.</span></div>
+                <div class="info-row"><i class="fas fa-coins"></i><span>עלות: 12€ לאדם</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/YjoECMVoyzVJtQPZ6?g_st=ac" target="_blank" class="highlight-link">ניווט למזח השייט</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">19:00-20:30 ארוחת ערב</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-utensils"></i><span>ארוחת ערב מהנה באחת מהמסעדות הכשרות</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">21:00 לילה טוב</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-moon"></i><span>חזרה לדירה ומנוחה</span></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+        <h3 class="day-title">יום שלישי 13/10 - היסטוריה, ארכיטקטורה ושופינג</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title">10:00-13:00 מצודת הדייגים והארמון</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-camera"></i><span>הגעה במונית למעלה המצודה. טיול רגלי אל מול התצפית ומשם לגני הארמון. חזרה לרובע היהודי במונית.</span></div>
+                <div class="info-row"><i class="fas fa-ticket-alt"></i><span>כניסה חופשית</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/VQTW9EP3u4rG7rJe9" target="_blank" class="highlight-link">ניווט למצודת הדייגים</a></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/t6qVMfYoj89CX58j8?g_st=ac" target="_blank" class="highlight-link">ניווט לגני הארמון</a></div>
+                <div class="info-row"><i class="fas fa-route"></i><a href="https://maps.app.goo.gl/LWQpSZrv4vBgCXyt8" target="_blank" class="highlight-link">מפת המסלול הרגלי המלא</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">13:00-14:30 הפוגת צהריים</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-coffee"></i><span>זמן התרעננות וארוחה קלילה</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">15:00-17:00 הפארק העירוני</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-tree"></i><span>טירה ציורית, אגם מלאכותי והרבה יופי. הגעה במונית אל כיכר הגיבורים.</span></div>
+                <div class="info-row"><i class="fas fa-ticket-alt"></i><span>כניסה חופשית לפארק</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/NvpAcupvuVEJ4r6p8?g_st=ac" target="_blank" class="highlight-link">ניווט לכיכר הגיבורים (כניסה)</a></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/X5usGyasZPigRCpaA?g_st=ac" target="_blank" class="highlight-link">ניווט לטירה</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">17:00-20:00 קניון ארנה (Arena Mall)</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-shopping-cart"></i><span>קניון ענק עם פריימארק ומבחר מותגים. הגעה מהפארק וחזרה לדירה במונית.</span></div>
+                <div class="info-row"><i class="fas fa-clock"></i><span>שעות פתיחה: 10:00 - 21:00</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/pQxcs33dnwmbgFebA" target="_blank" class="highlight-link">ניווט לקניון ארנה</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">20:00-21:30 ארוחת ערב</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-utensils"></i><span>ארוחת ערב ולילה טוב</span></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+        <h3 class="day-title">יום רביעי 14/10 - תפילות בקרעסטיר</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title">09:30 יציאה לדרך לקרעסטיר</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-car"></i><span>נסיעה של כשעתיים וחצי</span></div>
+                <div class="info-row"><i class="fas fa-coins"></i><span>עלות: 60€ למבוגר</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/KmE1JKZmdzK6wxus9?g_st=ac" target="_blank" class="highlight-link">ניווט לנקודת המפגש (ליד ניתאוולו)</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">12:00-14:00 תפילה בקרעסטיר</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-book"></i><span>תפילה בציון והתרעננות בהכנסת אורחים</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">16:30 חזרה לעיר</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-car-side"></i><span>הגעה חזרה לבודפשט</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">16:30-18:00 צהריים מאוחרת</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-hamburger"></i><span>התרעננות וארוחת צהריים מאוחרת</span></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">18:30-19:30 הגלגל הענק</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-eye"></i><span>עולים לראות את העיר המוארת מלמעלה</span></div>
+                <div class="info-row"><i class="fas fa-clock"></i><span>שעות פתיחה: 11:00 - 23:00</span></div>
+                <div class="info-row"><i class="fas fa-coins"></i><span>עלות (כוללת): 49,000 פורינט</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/djrPyGHJidgbLSkt5" target="_blank" class="highlight-link">ניווט לגלגל הענק</a></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title">19:30-21:00 ארוחת ערב ואריזות</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-suitcase"></i><span>ארוחה אחרונה, אריזת המזוודות ולילה טוב</span></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card">
+        <h3 class="day-title">יום חמישי 15/10 - חוזרים הביתה</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title">10:00 קפה אחרון ומזכרות</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-gift"></i><span>השלמות אחרונות לפני החזרה הביתה</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">12:30 יוצאים לשדה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-taxi"></i><span>הזמנת מונית בולט לשדה התעופה</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">13:15 מגיעים לשדה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-luggage-cart"></i><span>צ'ק אין ובידוק בטחוני</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">15:45 ממריאים</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-plane"></i><span>טיסה נעימה לישראל!</span></div>
+            </div>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="time-title">20:00 נחיתה בישראל</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-heart"></i><span>ברוכות החוזרות לישראל!</span></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Restaurants Section -->
+    <div class="day-card" id="restaurants">
+        <h3 class="day-title">מסעדות כשרות והשלמות</h3>
+        
+        <details>
+            <summary>
+                <span class="time-title"><i class="fas fa-drumstick-bite" style="margin-left:8px;"></i> מסעדות בשריות</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div style="margin-bottom: 15px;">
+                    <strong>ניתאווהלו (Nitavalo)</strong><br>
+                    <i class="fas fa-utensils"></i> מסעדת שף בשרית (חב"ד)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 12:00–22:00, ו' עד 16:00, מוצ"ש מ-19:30<br>
+                    <a href="https://maps.app.goo.gl/ciuHGrdUaDdrujfz8?g_st=ac" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>אשיז׳ (Ashis')</strong><br>
+                    <i class="fas fa-utensils"></i> אוכל רחוב ישראלי (פיקוח מקומי/חב"ד)<br>
+                    <i class="fas fa-clock"></i> א'-ד' עד 02:00 בלילה, ה' עד 16:00, מוצ"ש עד 02:00<br>
+                    <a href="https://maps.app.goo.gl/j4JfGp9F5HrbmYQa7?g_st=ac" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>כרמל (Carmel)</strong><br>
+                    <i class="fas fa-utensils"></i> הונגרי מסורתי וישראלי (גלאט, אוברלנדר)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 12:00–22:30, ו' עד 15:00<br>
+                    <a href="https://maps.app.goo.gl/AGTLwDkum2svHnJT9" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>חנה (Hanna)</strong><br>
+                    <i class="fas fa-utensils"></i> מסורתי אשכנזי בחצר בית הכנסת (גלאט, CRC)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 13:00–23:30, ו' 10:00–16:00<br>
+                    <a href="https://maps.app.goo.gl/ZrUcGfiyrCCmaZ4S8" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div>
+                    <strong>שוק הכרמל (Shuk HaCarmel)</strong><br>
+                    <i class="fas fa-utensils"></i> אוכל רחוב מהיר (למהדרין, אוברלנדר)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 12:00–00:00<br>
+                    <a href="https://maps.app.goo.gl/9MrP2bbRSe9raBrLA" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title"><i class="fas fa-cheese" style="margin-left:8px;"></i> חלבי ופרווה</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div style="margin-bottom: 15px;">
+                    <strong>קפה תמר (Cafe Tamar)</strong><br>
+                    <i class="fas fa-utensils"></i> ארוחות בוקר, פיצות, פסטות וקינוחים (חב"ד)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 08:00–22:00, ו' עד 16:00<br>
+                    <a href="https://maps.app.goo.gl/WkyumPX15vwjAfD27" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>תל אביב קפה (Tel Aviv Cafe)</strong><br>
+                    <i class="fas fa-utensils"></i> ארוחות, פסטות, דגים (חלב ישראל, חב"ד)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 08:30–21:00, ו' עד 14:00<br>
+                    <a href="https://maps.app.goo.gl/7LKUhtGsZaPevPrL7?g_st=ac" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>ברוקלין בייגל (Brooklyn Bagel)</strong><br>
+                    <i class="fas fa-utensils"></i> כריכי בייגל ניו-יורקי (רובע 13)<br>
+                    <i class="fas fa-clock"></i> ב'-ה' 09:00–21:00, ו' עד 14:30<br>
+                    <a href="https://maps.app.goo.gl/wuzmpew6YLibjibs5?g_st=ac" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>קיורטוש וגלידה כשרה</strong><br>
+                    <i class="fas fa-ice-cream"></i> חלבי מהדרין (חב"ד)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 11:00–23:00, ו' 09:00–14:00<br>
+                    <a href="https://maps.app.goo.gl/cLWVYWC5mwve2M8h6" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+                <div>
+                    <strong>חומוס בר (Hummus Bar)</strong><br>
+                    <i class="fas fa-utensils"></i> חומוס ופלאפל (כשר רק בסניף Wesselényi!)<br>
+                    <i class="fas fa-clock"></i> א'-ה' 12:00–23:00, ו' 11:00–16:00<br>
+                    <a href="https://maps.app.goo.gl/RJym6LnGbRUYUVDR7?g_st=ac" target="_blank" class="highlight-link"><i class="fas fa-map-marker-alt"></i> ניווט</a>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <span class="time-title"><i class="fas fa-shopping-basket" style="margin-left:8px;"></i> סופרמרקט והשלמות (רובע 7)</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row"><i class="fas fa-bread-slice"></i><span><strong>UpTown Kosher Bakery</strong> - מאפייה כשרה ללחמים, חלות ומאפים.</span></div>
+                <div class="info-row"><i class="fas fa-store"></i><span><strong>Kosher Market</strong> - סופרמרקט (רחוב Síp 12) להצטיידות וגבינות.</span></div>
+                <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/gHfX1X4BGT95c4DJ6" target="_blank" class="highlight-link">ניווט לסופרמרקט</a></div>
+            </div>
+        </details>
+    </div>
+
+    <!-- Cost Summary Table -->
+    <h3 class="cost-section-title">ריכוז עלויות אתרים (עבור 3 מבוגרים)</h3>
+    <table class="cost-table">
+        <thead>
+            <tr>
+                <th>שם אתר</th>
+                <th>עלות במטבע מקומי</th>
+                <th>עלות משוערת בש"ח*</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>סיור רגלי בעיר</td>
+                <td>90€</td>
+                <td>~360 ₪</td>
+            </tr>
+            <tr>
+                <td>שייט שקיעה</td>
+                <td>36€</td>
+                <td>~144 ₪</td>
+            </tr>
+            <tr>
+                <td>נסיעה לקרעסטיר</td>
+                <td>180€</td>
+                <td>~720 ₪</td>
+            </tr>
+            <tr>
+                <td>הגלגל הענק</td>
+                <td>49,000 פורינט (סה"כ לקבוצה)</td>
+                <td>~490 ₪</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="font-size: 0.85rem; color: #777; text-align: center; margin-bottom: 30px;">
+        * חישוב השקלים בפורינט מבוסס על הורדת 2 אפסים, האירו לפיערך משוער של 1€=4₪
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="line1">כל הזכויות שמורות להדס טרכטר - יועצת טיולים בארץ ובעולם 050-5685356</div>
+        <div class="line2">אין להעביר ללא אישור מפורש. העובר על כך עובר על גזל לפי דין תורה וחוקי המקום</div>
+    </footer>
+
+</body>
+</html>
