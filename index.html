@@ -10,9 +10,9 @@
         :root {
             --primary: #191970; /* כחול לילה */
             --secondary: #D4AF37; /* זהב */
-            --accent: #8B4513; /* חום שלכת */
+            --accent: #4E342E; /* חום כהה (במקום חום שלכת) */
             --bg-light: #F5F7FA;
-            --text-main: #333333;
+            --text-main: #3E2723; /* חום כהה לטקסט (במקום שחור) */
         }
 
         * {
@@ -174,7 +174,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
 
         .cost-table th, .cost-table td {
@@ -191,6 +191,14 @@
 
         .cost-table tr:last-child td {
             border-bottom: none;
+        }
+
+        .cost-note {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
         }
 
         /* --- Footer --- */
@@ -228,8 +236,8 @@
             <a href="#restaurants"><i class="fas fa-utensils"></i> מסעדות</a>
         </div>
         
-        <div style="font-size: 0.9rem; margin-top: 10px; color: var(--accent);">
-            <i class="fas fa-info-circle"></i> שקיעה: 18:00 | מטבע: פורינט (HUF) | מוניות מומלצות: Bolt
+        <div style="font-size: 0.95rem; margin-top: 10px; color: var(--accent); font-weight: 600;">
+            <i class="fas fa-info-circle"></i> שקיעה: 18:00 | מטבע: פורינט (להוריד שני אפסים) | מוניות: Bolt
         </div>
     </header>
 
@@ -470,7 +478,7 @@
             <div class="details-content">
                 <div class="info-row"><i class="fas fa-eye"></i><span>עולים לראות את העיר המוארת מלמעלה</span></div>
                 <div class="info-row"><i class="fas fa-clock"></i><span>שעות פתיחה: 11:00 - 23:00</span></div>
-                <div class="info-row"><i class="fas fa-coins"></i><span>עלות (כוללת): 49,000 פורינט</span></div>
+                <div class="info-row"><i class="fas fa-coins"></i><span>עלות: 4,900 פורינט לאדם</span></div>
                 <div class="info-row"><i class="fas fa-location-arrow"></i><a href="https://maps.app.goo.gl/djrPyGHJidgbLSkt5" target="_blank" class="highlight-link">ניווט לגלגל הענק</a></div>
             </div>
         </details>
@@ -650,27 +658,27 @@
             <tr>
                 <td>סיור רגלי בעיר</td>
                 <td>90€</td>
-                <td>~360 ₪</td>
+                <td>~324 ₪</td>
             </tr>
             <tr>
                 <td>שייט שקיעה</td>
                 <td>36€</td>
-                <td>~144 ₪</td>
+                <td>~130 ₪</td>
             </tr>
             <tr>
                 <td>נסיעה לקרעסטיר</td>
                 <td>180€</td>
-                <td>~720 ₪</td>
+                <td>~648 ₪</td>
             </tr>
             <tr>
                 <td>הגלגל הענק</td>
-                <td>49,000 פורינט (סה"כ לקבוצה)</td>
-                <td>~490 ₪</td>
+                <td>14,700 פורינט (סה"כ)</td>
+                <td>~147 ₪</td>
             </tr>
         </tbody>
     </table>
-    <div style="font-size: 0.85rem; color: #777; text-align: center; margin-bottom: 30px;">
-        * חישוב השקלים בפורינט מבוסס על הורדת 2 אפסים, האירו לפיערך משוער של 1€=4₪
+    <div class="cost-note">
+        * חישוב השקלים בפורינט מבוסס על הורדת 2 אפסים, והאירו לפי שער של 1€=3.6₪
     </div>
 
     <!-- Footer -->
